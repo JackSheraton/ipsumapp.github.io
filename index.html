@@ -6,109 +6,276 @@
     <title>ipsum — know yourself.</title>
     <style>
         :root {
+            /* Colori dal Design System */
             --bg-cream: #FAF9F6;
             --text-black: #000000;
             --text-secondary: rgba(0, 0, 0, 0.6);
+            --card-bg: #FFFFFF;
             --accent-orange: #f07c09;
+            --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.03);
+            --border-light: 1px solid rgba(0, 0, 0, 0.05);
         }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             line-height: 1.6; 
             color: var(--text-black); 
             background-color: var(--bg-cream);
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            font-weight: 400; /* .regular equivalent */
+            -webkit-font-smoothing: antialiased;
         }
-        header { 
-            text-align: center; 
-            padding: 60px 0 40px; 
+
+        /* Navigazione */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(250, 249, 246, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: var(--border-light);
         }
-        h1 { 
-            font-size: 34px; /* ipsumLargeTitle */
-            font-weight: 300; /* .light */
-            margin-bottom: 8px;
+
+        .logo {
+            font-size: 24px;
+            font-weight: 300;
+            text-decoration: none;
+            color: var(--text-black);
         }
+
         .brand-i {
             color: var(--accent-orange);
             font-weight: 500;
         }
+
+        .nav-links a {
+            margin-left: 24px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 16px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Contenitore principale */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 20px 40px; /* Padding top per compensare la navbar fissa */
+        }
+
+        /* Sezione Hero */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 60px 0;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        h1 { 
+            font-size: 48px; 
+            font-weight: 300; 
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
         .tagline {
-            font-size: 20px; /* ipsumHeadline */
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 400px;
+        }
+
+        /* Pulsante Download stile Ipsum */
+        .btn-download {
+            display: inline-block;
+            background-color: var(--text-black);
+            color: var(--bg-cream);
+            padding: 16px 32px;
+            border-radius: 24px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.15s ease, opacity 0.2s ease;
+        }
+
+        .btn-download:active {
+            transform: scale(0.96);
+        }
+
+        .btn-download:hover {
+            opacity: 0.9;
+        }
+
+        /* Placeholder Screenshot App */
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-placeholder {
+            width: 280px;
+            height: 580px;
+            background-color: var(--card-bg);
+            border-radius: 40px;
+            border: 8px solid #E5E5E5;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-secondary);
             font-style: italic;
         }
-        h2 {
-            font-size: 28px; /* ipsumTitle */
-            font-weight: 600; /* .semibold */
-            margin-top: 40px;
+
+        /* Sezioni interne (Supporto / Privacy) usando le Card */
+        .section-header {
+            margin: 80px 0 32px;
+            font-size: 28px;
+            font-weight: 600;
         }
-        section { 
-            padding: 24px 0; 
-            border-bottom: 1px solid rgba(0,0,0,0.05); 
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow-light);
+            border: var(--border-light);
+            margin-bottom: 24px;
         }
-        a { 
-            color: var(--accent-orange); 
-            text-decoration: none; 
+
+        .card p {
+            margin-bottom: 16px;
         }
-        a:hover { 
-            text-decoration: underline; 
+
+        .card a {
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-weight: 500;
         }
-        .footer { 
-            text-align: center; 
-            margin-top: 48px; 
-            font-size: 13px; /* ipsumCaption */
-            color: var(--text-secondary); 
-            padding-bottom: 40px;
+
+        .card a:hover {
+            text-decoration: underline;
         }
-        .privacy-content ul {
+
+        .privacy-list {
             padding-left: 20px;
+            margin-top: 24px;
         }
-        .privacy-content li {
-            margin-bottom: 12px;
+
+        .privacy-list li {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .privacy-list strong {
+            color: var(--text-black);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        /* Responsive per schermi piccoli */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 0;
+            }
+            .hero-description {
+                margin: 0 auto 40px;
+            }
+            .nav-links {
+                display: none; /* Nasconde i link su mobile per pulizia */
+            }
+            .card {
+                padding: 24px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1><span class="brand-i">i</span>psum</h1>
-        <p class="tagline">know yourself.</p>
-    </header>
+    <nav>
+        <a href="#" class="logo"><span class="brand-i">i</span>psum</a>
+        <div class="nav-links">
+            <a href="#support">Support</a>
+            <a href="#privacy">Privacy</a>
+        </div>
+    </nav>
 
-    <section id="about">
-        <p>Ipsum is your personal emotional intelligence companion. A private space where you track your moods, capture meaningful moments, reflect on your feelings, and receive AI-generated portraits of who you are.</p>
-    </section>
+    <div class="container">
+        <section class="hero">
+            <div class="hero-text">
+                <h1><span class="brand-i">i</span>psum</h1>
+                <p class="tagline">know yourself.</p>
+                <p class="hero-description">Your feelings, distilled into a personal portrait. Track your moods, capture moments, and reflect beautifully.</p>
+                <a href="#download" class="btn-download">Coming soon to App Store</a>
+            </div>
+            <div class="hero-image">
+                <div class="phone-placeholder">
+                    [App Screenshot]
+                </div>
+            </div>
+        </section>
 
-    <section id="support">
-        <h2>Support & Contact</h2>
-        <p>Experiencing an issue with the app, have a feature request, or just want to share your feedback?</p>
-        <p>We are here to help. Reach out to us at:</p>
-        <p><strong><a href="mailto:giacomo.seratoni@gmail.com">support@esempio.com</a></strong></p>
-        <p style="font-size: 13px; color: var(--text-secondary);">Please include your device model and iOS version for technical issues.</p>
-    </section>
+        <h2 id="support" class="section-header">Support & Contact</h2>
+        <div class="card">
+            <p>Experiencing an issue with the app, have a feature request, or just want to share your feedback?</p>
+            <p>We are here to help. Reach out directly to our support team:</p>
+            <p style="font-size: 20px; margin: 24px 0;"><strong><a href="mailto:support@esempio.com">support@esempio.com</a></strong></p>
+            <p style="font-size: 14px; color: var(--text-secondary);">For technical issues, please include your device model (e.g., iPhone 15 Pro) and iOS version.</p>
+        </div>
 
-    <section id="privacy">
-        <h2>Privacy Policy</h2>
-        <div class="privacy-content">
-            <p><strong>Effective Date:</strong> March 8, 2026</p>
+        <h2 id="privacy" class="section-header">Privacy Policy</h2>
+        <div class="card">
+            <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">Effective Date: March 8, 2026</p>
             <p>Your privacy is fundamental to ipsum. We believe your reflections and emotional data belong exclusively to you. This policy outlines exactly how your data is handled.</p>
             
-            <ul>
-                <li><strong>Local Storage (SwiftData):</strong> Your mood entries, feelings, moments, and photos are stored locally on your device. We do not currently sync this personal data to our servers.</li>
-                <li><strong>AI Generation (Google Gemini):</strong> To generate your personal prose portrait (the "Ipsum"), the app temporarily sends your recent feelings and mood summaries to the Google Gemini API. This data is transmitted securely and is strictly used to generate the text. We do not use your personal entries to train public AI models.</li>
-                <li><strong>Authentication & Analytics (Firebase):</strong> We use Firebase Authentication (Email/Password and Google Sign-In) to manage your account. We also use Firebase Analytics to collect anonymized usage data (like screens viewed or features used) to help us improve the app. This data does not include the content of your personal journals.</li>
-                <li><strong>Camera & Photo Library:</strong> The app requests access to your camera and photo library strictly for you to attach images to your Moments. We do not access photos you do not explicitly select.</li>
-                <li><strong>Data Deletion:</strong> You can delete your account and all associated data directly from the Settings menu within the app.</li>
+            <ul class="privacy-list">
+                <li><strong>Local Storage (SwiftData):</strong> Your mood entries, feelings, moments, and photos are stored locally on your device. We do not sync this personal data to our servers.</li>
+                <li><strong>AI Generation (Google Gemini):</strong> To generate your personal prose portrait, the app temporarily sends your recent feelings to the Google Gemini API securely. We do not use your personal entries to train public AI models.</li>
+                <li><strong>Authentication & Analytics (Firebase):</strong> We use Firebase to manage your account and collect anonymized usage data to help us improve. This data does not include the content of your personal journals.</li>
+                <li><strong>Camera & Media:</strong> The app requests access to your camera and photo library strictly for you to attach images to your Moments.</li>
+                <li><strong>Data Deletion:</strong> You can permanently delete your account and all associated data directly from the app Settings.</li>
             </ul>
-            <p>If you have any questions about your privacy, please contact us using the support email above.</p>
         </div>
-    </section>
-
-    <div class="footer">
-        <p>&copy; 2026 ipsum. All rights reserved.</p>
     </div>
+
+    <footer>
+        <p>&copy; 2026 ipsum. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
